@@ -97,25 +97,25 @@ with open(file_to_save, "w") as txt_file:
     for county in counties_votes:
         #print(county)
             # 6b: Retrieve the county vote count.
-        county_votes = counties_votes[counties_name]
+        county_votes = counties_votes[county]
         county_vote_percentage = float(county_votes) / float(total_votes) * 100
         
             # 6c: Calculate the percentage of votes for the county.
         counties_results = (
-            f"{counties_name}: {county_vote_percentage:.1f}% ({county_votes:,})\n")
+            f"{county}: {county_vote_percentage:.1f}% ({county_votes:,})\n")
         print(counties_results, end="")
         
         txt_file.write(counties_results)
         
         if (county_votes > county_voter_turnout):
             county_voter_turnout = county_votes
-            winning_counties = county
+            largest_counties = county
            
             
             # 6d: Print the county results to the terminal.
     winning_counties_summary = (
         f"-------------------------\n"
-        f"Winning Vote Count: {county_voter_turnout}\n"
+        f"Winning Vote Count: {largest_county}\n"
         f"-------------------------\n")
     
     print(winning_counties_summary, end="")
